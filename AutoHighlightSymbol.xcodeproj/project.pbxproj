@@ -91,10 +91,10 @@
 		52A5C43A1BC5109E006D5EC6 = {
 			isa = PBXGroup;
 			children = (
-				52D7CA7D1BCE496800FDE671 /* Xcode Headers */,
 				52A5C44A1BC5109E006D5EC6 /* AutoHighlightSymbol */,
 				52A5C4451BC5109E006D5EC6 /* Frameworks */,
 				52A5C4441BC5109E006D5EC6 /* Products */,
+				52D7CA7D1BCE496800FDE671 /* Xcode Headers */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,12 +118,12 @@
 		52A5C44A1BC5109E006D5EC6 /* AutoHighlightSymbol */ = {
 			isa = PBXGroup;
 			children = (
+				52A5C44B1BC5109E006D5EC6 /* Supporting Files */,
 				52A5C44E1BC5109E006D5EC6 /* AutoHighlightSymbol.h */,
 				52A5C44F1BC5109E006D5EC6 /* AutoHighlightSymbol.m */,
+				52A5C4541BC5109E006D5EC6 /* Info.plist */,
 				52A5C4511BC5109E006D5EC6 /* NSObject_Extension.h */,
 				52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */,
-				52A5C4541BC5109E006D5EC6 /* Info.plist */,
-				52A5C44B1BC5109E006D5EC6 /* Supporting Files */,
 			);
 			path = AutoHighlightSymbol;
 			sourceTree = "<group>";
