@@ -18,13 +18,15 @@ Screenshots
 
 Installation
 ------------
-- Download the sources, build the project and restart Xcode.
+- Use [Alcatraz](http://alcatraz.io/) to install and manage plugins, or
 
+- Download the sources, build the project and restart Xcode.
+ 
 - If you encounter any issues you can uninstall it by removing the ~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AutoHighlightSymbol.xcplugin folder.
 
 Todo
 ----
-- [ ] Integrate into [Alcatraz](https://github.com/supermarin/Alcatraz)
+- [x] Integrate into [Alcatraz](http://alcatraz.io/)
 - [ ] Better highlight detection mechanism
 - [ ] Better highlight rendering mechanism
 
