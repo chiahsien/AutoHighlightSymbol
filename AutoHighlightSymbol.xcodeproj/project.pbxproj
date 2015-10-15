@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52A5C4471BC5109E006D5EC6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A5C4461BC5109E006D5EC6 /* AppKit.framework */; settings = {ASSET_TAGS = (); }; };
+		52A5C4491BC5109E006D5EC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A5C4481BC5109E006D5EC6 /* Foundation.framework */; settings = {ASSET_TAGS = (); }; };
+		52A5C44D1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 52A5C44C1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme */; };
+		52A5C4501BC5109E006D5EC6 /* AutoHighlightSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A5C44F1BC5109E006D5EC6 /* AutoHighlightSymbol.m */; };
+		52A5C4531BC5109E006D5EC6 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		52A5C4431BC5109E006D5EC6 /* AutoHighlightSymbol.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoHighlightSymbol.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A5C4461BC5109E006D5EC6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		52A5C4481BC5109E006D5EC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		52A5C44C1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AutoHighlightSymbol.xcscheme; path = AutoHighlightSymbol.xcodeproj/xcshareddata/xcschemes/AutoHighlightSymbol.xcscheme; sourceTree = SOURCE_ROOT; };
+		52A5C44E1BC5109E006D5EC6 /* AutoHighlightSymbol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoHighlightSymbol.h; sourceTree = "<group>"; };
+		52A5C44F1BC5109E006D5EC6 /* AutoHighlightSymbol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoHighlightSymbol.m; sourceTree = "<group>"; };
+		52A5C4511BC5109E006D5EC6 /* NSObject_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSObject_Extension.h; sourceTree = "<group>"; };
+		52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSObject_Extension.m; sourceTree = "<group>"; };
+		52A5C4541BC5109E006D5EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D7CA7E1BCE496800FDE671 /* DBGBreakpointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGBreakpointAnnotation.h; sourceTree = "<group>"; };
+		52D7CA7F1BCE496800FDE671 /* DBGBreakpointAnnotationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGBreakpointAnnotationProvider.h; sourceTree = "<group>"; };
+		52D7CA801BCE496800FDE671 /* DVTAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTAnnotation.h; sourceTree = "<group>"; };
+		52D7CA811BCE496800FDE671 /* DVTAnnotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTAnnotationManager.h; sourceTree = "<group>"; };
+		52D7CA821BCE496800FDE671 /* DVTAnnotationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTAnnotationProvider.h; sourceTree = "<group>"; };
+		52D7CA831BCE496800FDE671 /* DVTCompletingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTCompletingTextView.h; sourceTree = "<group>"; };
+		52D7CA841BCE496800FDE671 /* DVTDocumentLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTDocumentLocation.h; sourceTree = "<group>"; };
+		52D7CA851BCE496800FDE671 /* DVTFilePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFilePath.h; sourceTree = "<group>"; };
+		52D7CA861BCE496800FDE671 /* DVTFindResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFindResult.h; sourceTree = "<group>"; };
+		52D7CA871BCE496800FDE671 /* DVTFoldingLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoldingLayoutManager.h; sourceTree = "<group>"; };
+		52D7CA881BCE496800FDE671 /* DVTFoldingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoldingManager.h; sourceTree = "<group>"; };
+		52D7CA891BCE496800FDE671 /* DVTFoldingManagerDelegate-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTFoldingManagerDelegate-Protocol.h"; sourceTree = "<group>"; };
+		52D7CA8A1BCE496800FDE671 /* DVTFontAndColorTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFontAndColorTheme.h; sourceTree = "<group>"; };
+		52D7CA8B1BCE496800FDE671 /* DVTInvalidation-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTInvalidation-Protocol.h"; sourceTree = "<group>"; };
+		52D7CA8C1BCE496800FDE671 /* DVTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTLayoutManager.h; sourceTree = "<group>"; };
+		52D7CA8D1BCE496800FDE671 /* DVTMessageBubbleAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTMessageBubbleAnnotation.h; sourceTree = "<group>"; };
+		52D7CA8E1BCE496800FDE671 /* DVTPointerArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTPointerArray.h; sourceTree = "<group>"; };
+		52D7CA8F1BCE496800FDE671 /* DVTPreferenceSet-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTPreferenceSet-Protocol.h"; sourceTree = "<group>"; };
+		52D7CA901BCE496800FDE671 /* DVTPreferenceSetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTPreferenceSetManager.h; sourceTree = "<group>"; };
+		52D7CA911BCE496800FDE671 /* DVTSourceLanguageSourceModelService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTSourceLanguageSourceModelService.h; sourceTree = "<group>"; };
+		52D7CA921BCE496800FDE671 /* DVTSourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTSourceModel.h; sourceTree = "<group>"; };
+		52D7CA931BCE496800FDE671 /* DVTSourceModelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTSourceModelItem.h; sourceTree = "<group>"; };
+		52D7CA941BCE496800FDE671 /* DVTSourceNodeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTSourceNodeTypes.h; sourceTree = "<group>"; };
+		52D7CA951BCE496800FDE671 /* DVTSourceTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTSourceTextView.h; sourceTree = "<group>"; };
+		52D7CA961BCE496800FDE671 /* DVTTextAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTTextAnnotation.h; sourceTree = "<group>"; };
+		52D7CA971BCE496800FDE671 /* DVTTextDocumentLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTTextDocumentLocation.h; sourceTree = "<group>"; };
+		52D7CA981BCE496800FDE671 /* DVTTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTTextStorage.h; sourceTree = "<group>"; };
+		52D7CA991BCE496800FDE671 /* DVTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTTextView.h; sourceTree = "<group>"; };
+		52D7CA9A1BCE496800FDE671 /* DVTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTViewController.h; sourceTree = "<group>"; };
+		52D7CA9B1BCE496800FDE671 /* IDEBreakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEBreakpoint.h; sourceTree = "<group>"; };
+		52D7CA9C1BCE496800FDE671 /* IDEBuildIssueAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEBuildIssueAnnotation.h; sourceTree = "<group>"; };
+		52D7CA9D1BCE496800FDE671 /* IDEBuildIssueErrorAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEBuildIssueErrorAnnotation.h; sourceTree = "<group>"; };
+		52D7CA9E1BCE496800FDE671 /* IDEBuildIssueWarningAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEBuildIssueWarningAnnotation.h; sourceTree = "<group>"; };
+		52D7CA9F1BCE496800FDE671 /* IDEComparisonEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEComparisonEditor.h; sourceTree = "<group>"; };
+		52D7CAA01BCE496800FDE671 /* IDEEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEEditor.h; sourceTree = "<group>"; };
+		52D7CAA11BCE496800FDE671 /* IDEEditorArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEEditorArea.h; sourceTree = "<group>"; };
+		52D7CAA21BCE496800FDE671 /* IDEEditorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEEditorContext.h; sourceTree = "<group>"; };
+		52D7CAA31BCE496800FDE671 /* IDEEditorDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEEditorDocument.h; sourceTree = "<group>"; };
+		52D7CAA41BCE496800FDE671 /* IDEEditorModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEEditorModeViewController.h; sourceTree = "<group>"; };
+		52D7CAA51BCE496800FDE671 /* IDEFileBreakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFileBreakpoint.h; sourceTree = "<group>"; };
+		52D7CAA61BCE496800FDE671 /* IDEFileTextSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFileTextSettings.h; sourceTree = "<group>"; };
+		52D7CAA71BCE496800FDE671 /* IDEIssueAnnotationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEIssueAnnotationProvider.h; sourceTree = "<group>"; };
+		52D7CAA81BCE496800FDE671 /* IDESourceCodeComparisonEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceCodeComparisonEditor.h; sourceTree = "<group>"; };
+		52D7CAA91BCE496800FDE671 /* IDESourceCodeDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceCodeDocument.h; sourceTree = "<group>"; };
+		52D7CAAA1BCE496800FDE671 /* IDESourceCodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceCodeEditor.h; sourceTree = "<group>"; };
+		52D7CAAB1BCE496800FDE671 /* IDESourceCodeEditorContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceCodeEditorContainerView.h; sourceTree = "<group>"; };
+		52D7CAAC1BCE496800FDE671 /* IDEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEViewController.h; sourceTree = "<group>"; };
+		52D7CAAD1BCE496800FDE671 /* IDEWorkspaceTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEWorkspaceTabController.h; sourceTree = "<group>"; };
+		52D7CAAE1BCE496800FDE671 /* IDEWorkspaceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEWorkspaceWindowController.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52A5C4411BC5109E006D5EC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52A5C4471BC5109E006D5EC6 /* AppKit.framework in Frameworks */,
+				52A5C4491BC5109E006D5EC6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52A5C43A1BC5109E006D5EC6 = {
+			isa = PBXGroup;
+			children = (
+				52D7CA7D1BCE496800FDE671 /* Xcode Headers */,
+				52A5C44A1BC5109E006D5EC6 /* AutoHighlightSymbol */,
+				52A5C4451BC5109E006D5EC6 /* Frameworks */,
+				52A5C4441BC5109E006D5EC6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52A5C4441BC5109E006D5EC6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52A5C4431BC5109E006D5EC6 /* AutoHighlightSymbol.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52A5C4451BC5109E006D5EC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52A5C4461BC5109E006D5EC6 /* AppKit.framework */,
+				52A5C4481BC5109E006D5EC6 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52A5C44A1BC5109E006D5EC6 /* AutoHighlightSymbol */ = {
+			isa = PBXGroup;
+			children = (
+				52A5C44E1BC5109E006D5EC6 /* AutoHighlightSymbol.h */,
+				52A5C44F1BC5109E006D5EC6 /* AutoHighlightSymbol.m */,
+				52A5C4511BC5109E006D5EC6 /* NSObject_Extension.h */,
+				52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */,
+				52A5C4541BC5109E006D5EC6 /* Info.plist */,
+				52A5C44B1BC5109E006D5EC6 /* Supporting Files */,
+			);
+			path = AutoHighlightSymbol;
+			sourceTree = "<group>";
+		};
+		52A5C44B1BC5109E006D5EC6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52A5C44C1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52D7CA7D1BCE496800FDE671 /* Xcode Headers */ = {
+			isa = PBXGroup;
+			children = (
+				52D7CA7E1BCE496800FDE671 /* DBGBreakpointAnnotation.h */,
+				52D7CA7F1BCE496800FDE671 /* DBGBreakpointAnnotationProvider.h */,
+				52D7CA801BCE496800FDE671 /* DVTAnnotation.h */,
+				52D7CA811BCE496800FDE671 /* DVTAnnotationManager.h */,
+				52D7CA821BCE496800FDE671 /* DVTAnnotationProvider.h */,
+				52D7CA831BCE496800FDE671 /* DVTCompletingTextView.h */,
+				52D7CA841BCE496800FDE671 /* DVTDocumentLocation.h */,
+				52D7CA851BCE496800FDE671 /* DVTFilePath.h */,
+				52D7CA861BCE496800FDE671 /* DVTFindResult.h */,
+				52D7CA871BCE496800FDE671 /* DVTFoldingLayoutManager.h */,
+				52D7CA881BCE496800FDE671 /* DVTFoldingManager.h */,
+				52D7CA891BCE496800FDE671 /* DVTFoldingManagerDelegate-Protocol.h */,
+				52D7CA8A1BCE496800FDE671 /* DVTFontAndColorTheme.h */,
+				52D7CA8B1BCE496800FDE671 /* DVTInvalidation-Protocol.h */,
+				52D7CA8C1BCE496800FDE671 /* DVTLayoutManager.h */,
+				52D7CA8D1BCE496800FDE671 /* DVTMessageBubbleAnnotation.h */,
+				52D7CA8E1BCE496800FDE671 /* DVTPointerArray.h */,
+				52D7CA8F1BCE496800FDE671 /* DVTPreferenceSet-Protocol.h */,
+				52D7CA901BCE496800FDE671 /* DVTPreferenceSetManager.h */,
+				52D7CA911BCE496800FDE671 /* DVTSourceLanguageSourceModelService.h */,
+				52D7CA921BCE496800FDE671 /* DVTSourceModel.h */,
+				52D7CA931BCE496800FDE671 /* DVTSourceModelItem.h */,
+				52D7CA941BCE496800FDE671 /* DVTSourceNodeTypes.h */,
+				52D7CA951BCE496800FDE671 /* DVTSourceTextView.h */,
+				52D7CA961BCE496800FDE671 /* DVTTextAnnotation.h */,
+				52D7CA971BCE496800FDE671 /* DVTTextDocumentLocation.h */,
+				52D7CA981BCE496800FDE671 /* DVTTextStorage.h */,
+				52D7CA991BCE496800FDE671 /* DVTTextView.h */,
+				52D7CA9A1BCE496800FDE671 /* DVTViewController.h */,
+				52D7CA9B1BCE496800FDE671 /* IDEBreakpoint.h */,
+				52D7CA9C1BCE496800FDE671 /* IDEBuildIssueAnnotation.h */,
+				52D7CA9D1BCE496800FDE671 /* IDEBuildIssueErrorAnnotation.h */,
+				52D7CA9E1BCE496800FDE671 /* IDEBuildIssueWarningAnnotation.h */,
+				52D7CA9F1BCE496800FDE671 /* IDEComparisonEditor.h */,
+				52D7CAA01BCE496800FDE671 /* IDEEditor.h */,
+				52D7CAA11BCE496800FDE671 /* IDEEditorArea.h */,
+				52D7CAA21BCE496800FDE671 /* IDEEditorContext.h */,
+				52D7CAA31BCE496800FDE671 /* IDEEditorDocument.h */,
+				52D7CAA41BCE496800FDE671 /* IDEEditorModeViewController.h */,
+				52D7CAA51BCE496800FDE671 /* IDEFileBreakpoint.h */,
+				52D7CAA61BCE496800FDE671 /* IDEFileTextSettings.h */,
+				52D7CAA71BCE496800FDE671 /* IDEIssueAnnotationProvider.h */,
+				52D7CAA81BCE496800FDE671 /* IDESourceCodeComparisonEditor.h */,
+				52D7CAA91BCE496800FDE671 /* IDESourceCodeDocument.h */,
+				52D7CAAA1BCE496800FDE671 /* IDESourceCodeEditor.h */,
+				52D7CAAB1BCE496800FDE671 /* IDESourceCodeEditorContainerView.h */,
+				52D7CAAC1BCE496800FDE671 /* IDEViewController.h */,
+				52D7CAAD1BCE496800FDE671 /* IDEWorkspaceTabController.h */,
+				52D7CAAE1BCE496800FDE671 /* IDEWorkspaceWindowController.h */,
+			);
+			path = "Xcode Headers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52A5C4421BC5109E006D5EC6 /* AutoHighlightSymbol */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52A5C4571BC5109E006D5EC6 /* Build configuration list for PBXNativeTarget "AutoHighlightSymbol" */;
+			buildPhases = (
+				52A5C43F1BC5109E006D5EC6 /* Sources */,
+				52A5C4401BC5109E006D5EC6 /* Resources */,
+				52A5C4411BC5109E006D5EC6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoHighlightSymbol;
+			productName = AutoHighlightSymbol;
+			productReference = 52A5C4431BC5109E006D5EC6 /* AutoHighlightSymbol.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52A5C43B1BC5109E006D5EC6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Nelson;
+				TargetAttributes = {
+					52A5C4421BC5109E006D5EC6 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 52A5C43E1BC5109E006D5EC6 /* Build configuration list for PBXProject "AutoHighlightSymbol" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 52A5C43A1BC5109E006D5EC6;
+			productRefGroup = 52A5C4441BC5109E006D5EC6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52A5C4421BC5109E006D5EC6 /* AutoHighlightSymbol */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52A5C4401BC5109E006D5EC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52A5C44D1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52A5C43F1BC5109E006D5EC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52A5C4501BC5109E006D5EC6 /* AutoHighlightSymbol.m in Sources */,
+				52A5C4531BC5109E006D5EC6 /* NSObject_Extension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		52A5C4551BC5109E006D5EC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		52A5C4561BC5109E006D5EC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		52A5C4581BC5109E006D5EC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = AutoHighlightSymbol/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelson.AutoHighlightSymbol;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		52A5C4591BC5109E006D5EC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = AutoHighlightSymbol/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelson.AutoHighlightSymbol;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52A5C43E1BC5109E006D5EC6 /* Build configuration list for PBXProject "AutoHighlightSymbol" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52A5C4551BC5109E006D5EC6 /* Debug */,
+				52A5C4561BC5109E006D5EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52A5C4571BC5109E006D5EC6 /* Build configuration list for PBXNativeTarget "AutoHighlightSymbol" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52A5C4581BC5109E006D5EC6 /* Debug */,
+				52A5C4591BC5109E006D5EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52A5C43B1BC5109E006D5EC6 /* Project object */;
+}
