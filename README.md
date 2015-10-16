@@ -26,7 +26,7 @@ Usage
 
 - It works with Xcode v7.0.1 (7A1001), read this [wiki document](https://github.com/chiahsien/AutoHighlightSymbol/wiki/Which-version-of-Xcode-does-it-support%3F) if you're using other version of Xcode.
 
-- After installation, you need to enable it from Xcode **[Edit] -> [Enable Auto Highlight Symbol]** menu.
+- After installation, you need to enable it from Xcode **[Editor] -> [Enable Auto Highlight Symbol]** menu.
 
 
 Todo
@@ -50,6 +50,7 @@ AutoHighlightSymbol cannot be done without these great plugins.
 - [SCXcodeMiniMap](https://github.com/stefanceriu/SCXcodeMiniMap)
 - [HighlightSelectedString](https://github.com/keepyounger/HighlightSelectedString)
 - [XcodeBoost](https://github.com/fortinmike/XcodeBoost)
+- [FuzzyAutocompletePlugin](https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin)
 
 And these great articles.
 

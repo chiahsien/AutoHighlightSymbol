@@ -73,6 +73,10 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
                                              selector:@selector(applicationDidFinishLaunching:)
                                                  name:NSApplicationDidFinishLaunchingNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(menuDidChange:)
+                                                 name:NSMenuDidChangeItemNotification
+                                               object:nil];
   }
   return self;
 }
@@ -87,20 +91,9 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
 #pragma mark - Notification Handling
 
 - (void)applicationDidFinishLaunching:(NSNotification *)noti {
-  // Create menu items, initialize UI, etc.
-  NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
-  if (menuItem) {
-    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-
-    NSString *title = [AutoHighlightSymbol isEnabled] ? @"Disable Auto Highlight Symbol" : @"Enable Auto Highlight Symbol";
-    NSMenuItem *highlightMenuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(toggleHighlight:) keyEquivalent:@""];
-    [highlightMenuItem setTarget:self];
-    [[menuItem submenu] addItem:highlightMenuItem];
-
-    NSMenuItem *colorMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Highlight Color" action:@selector(setupColor:) keyEquivalent:@""];
-    [colorMenuItem setTarget:self];
-    [[menuItem submenu] addItem:colorMenuItem];
-  }
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:NSApplicationDidFinishLaunchingNotification
+                                                object:nil];
 
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(selectedExpressionDidChange:)
@@ -132,11 +125,41 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   [textView setNeedsDisplay:YES];
 }
 
-#pragma mark - Menu Item Action
+// Code from https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/blob/master/FuzzyAutocomplete/FuzzyAutocomplete.m
+- (void)menuDidChange:(NSNotification *)notification {
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:NSMenuDidChangeItemNotification
+                                                object:nil];
+  [self createMenuItem];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(menuDidChange:)
+                                               name:NSMenuDidChangeItemNotification
+                                             object:nil];
+}
+
+#pragma mark - Menu Item and Action
+
+- (void)createMenuItem {
+  NSString *title = @"Auto Highlight Symbol";
+  NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Editor"];
+
+  if (menuItem && ![menuItem.submenu itemWithTitle:title]) {
+    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+
+    NSMenuItem *highlightMenuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(toggleHighlight:) keyEquivalent:@""];
+    [highlightMenuItem setTarget:self];
+    [highlightMenuItem setState:([AutoHighlightSymbol isEnabled] ? NSOnState : NSOffState)];
+    [[menuItem submenu] addItem:highlightMenuItem];
+
+    NSMenuItem *colorMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Highlight Color" action:@selector(setupColor:) keyEquivalent:@""];
+    [colorMenuItem setTarget:self];
+    [[menuItem submenu] addItem:colorMenuItem];
+  }
+}
 
 - (void)toggleHighlight:(NSMenuItem *)item {
   [AutoHighlightSymbol setIsEnabled:![AutoHighlightSymbol isEnabled]];
-  item.title = [AutoHighlightSymbol isEnabled] ? @"Disable Auto Highlight Symbol" : @"Enable Auto Highlight Symbol";
+  [item setState:([AutoHighlightSymbol isEnabled] ? NSOnState : NSOffState)];
 }
 
 - (void)setupColor:(NSMenuItem *)item {
