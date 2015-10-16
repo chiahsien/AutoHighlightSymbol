@@ -22,6 +22,7 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 @property (nonatomic, strong) NSMutableArray *ranges;
 @property (nonatomic, strong) NSColor *highlightColor;
+@property (nonatomic, strong) NSMenuItem *highlightMenuItem;
 @property (nonatomic, strong) NSMenuItem *colorMenuItem;
 @end
 
@@ -124,17 +125,9 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:NSApplicationDidFinishLaunchingNotification
                                                 object:nil];
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(selectedExpressionDidChange:)
-                                               name:@"DVTSourceExpressionSelectedExpressionDidChangeNotification"
-                                             object:nil];
 }
 
 - (void)selectedExpressionDidChange:(NSNotification *)noti {
-  if (![AutoHighlightSymbol isEnabled]) {
-    return;
-  }
   [self removeOldHighlightColor];
   [self applyNewHighlightColor];
 }
@@ -162,27 +155,38 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
 
     NSMenuItem *highlightMenuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(toggleHighlight:) keyEquivalent:@""];
     highlightMenuItem.target = self;
-    highlightMenuItem.state = ([AutoHighlightSymbol isEnabled] ? NSOnState : NSOffState);
     [menuItem.submenu addItem:highlightMenuItem];
+    self.highlightMenuItem = highlightMenuItem;
 
     NSMenuItem *colorMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Highlight Color" action:NULL keyEquivalent:@""];
     colorMenuItem.target = self;
     colorMenuItem.action = ([AutoHighlightSymbol isEnabled] ? @selector(setupColor:) : NULL);
     [menuItem.submenu addItem:colorMenuItem];
     self.colorMenuItem = colorMenuItem;
+
+    [self enableHighlight:[AutoHighlightSymbol isEnabled]];
   }
 }
 
 - (void)toggleHighlight:(NSMenuItem *)item {
   [AutoHighlightSymbol setIsEnabled:![AutoHighlightSymbol isEnabled]];
+  [self enableHighlight:[AutoHighlightSymbol isEnabled]];
+}
 
-  BOOL enabled = [AutoHighlightSymbol isEnabled];
+- (void)enableHighlight:(BOOL)enabled {
   if (enabled) {
     [self applyNewHighlightColor];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectedExpressionDidChange:)
+                                                 name:@"DVTSourceExpressionSelectedExpressionDidChangeNotification"
+                                               object:nil];
   } else {
     [self removeOldHighlightColor];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"DVTSourceExpressionSelectedExpressionDidChangeNotification"
+                                                  object:nil];
   }
-  [item setState:(enabled ? NSOnState : NSOffState)];
+  self.highlightMenuItem.state = (enabled ? NSOnState : NSOffState);
   self.colorMenuItem.action = (enabled ? @selector(setupColor:) : NULL);
 }
 
