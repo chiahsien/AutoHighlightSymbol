@@ -7,10 +7,6 @@ AutoHighlightSymbol is a plugin for Xcode, it adds background highlight color to
 
 This plugin is still in early beta, you're welcome to improve it and send me pull requests.
 
-**NOTICE**:
-
-You need to enable *Highlight instances of selected symbol* option first from *Xcode preferences -> Text Editing*.
-
 Screenshots
 -----------
 
@@ -23,6 +19,15 @@ Installation
 - Download the sources, build the project and restart Xcode.
  
 - If you encounter any issues you can uninstall it by removing the ~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AutoHighlightSymbol.xcplugin folder.
+
+Usage
+-----
+- You need to enable *Highlight instances of selected symbol* option first from *Xcode preferences -> Text Editing*.
+
+- It works with Xcode v7.0.1 (7A1001), read this [wiki document](https://github.com/chiahsien/AutoHighlightSymbol/wiki/Which-version-of-Xcode-does-it-support%3F) if you're using other version of Xcode.
+
+- After installation, you need to enable it from Xcode **[Edit] -> [Enable Auto Highlight Symbol]** menu.
+
 
 Todo
 ----
