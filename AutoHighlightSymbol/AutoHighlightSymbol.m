@@ -22,6 +22,7 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 @property (nonatomic, strong) NSMutableArray *ranges;
 @property (nonatomic, strong) NSColor *highlightColor;
+@property (nonatomic, strong) NSMenuItem *colorMenuItem;
 @end
 
 @implementation AutoHighlightSymbol
@@ -88,6 +89,35 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+#pragma mark - Highlight Rendering
+
+- (void)removeOldHighlightColor {
+  DVTSourceTextView *textView = [self currentSourceTextView];
+  DVTLayoutManager *layoutManager = (DVTLayoutManager *)textView.layoutManager;
+
+  for (NSValue *range in self.ranges) {
+    [layoutManager removeTemporaryAttribute:NSBackgroundColorAttributeName
+                          forCharacterRange:[range rangeValue]];
+  }
+  [self.ranges removeAllObjects];
+
+  [textView setNeedsDisplay:YES];
+}
+
+- (void)applyNewHighlightColor {
+  DVTSourceTextView *textView = [self currentSourceTextView];
+  DVTLayoutManager *layoutManager = (DVTLayoutManager *)textView.layoutManager;
+
+  [layoutManager.autoHighlightTokenRanges enumerateObjectsUsingBlock:^(NSValue *range, NSUInteger idx, BOOL *stop) {
+    [layoutManager addTemporaryAttribute:NSBackgroundColorAttributeName
+                                   value:self.highlightColor
+                       forCharacterRange:[range rangeValue]];
+  }];
+  [self.ranges addObjectsFromArray:layoutManager.autoHighlightTokenRanges];
+
+  [textView setNeedsDisplay:YES];
+}
+
 #pragma mark - Notification Handling
 
 - (void)applicationDidFinishLaunching:(NSNotification *)noti {
@@ -105,24 +135,8 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   if (![AutoHighlightSymbol isEnabled]) {
     return;
   }
-
-  DVTSourceTextView *textView = [self currentSourceTextView];
-  DVTLayoutManager *layoutManager = (DVTLayoutManager *)textView.layoutManager;
-
-  for (NSValue *range in self.ranges) {
-    [layoutManager removeTemporaryAttribute:NSBackgroundColorAttributeName
-                          forCharacterRange:[range rangeValue]];
-  }
-  [self.ranges removeAllObjects];
-
-  [layoutManager.autoHighlightTokenRanges enumerateObjectsUsingBlock:^(NSValue *range, NSUInteger idx, BOOL *stop) {
-    [self.ranges addObject:range];
-    [layoutManager addTemporaryAttribute:NSBackgroundColorAttributeName
-                                   value:self.highlightColor
-                       forCharacterRange:[range rangeValue]];
-  }];
-
-  [textView setNeedsDisplay:YES];
+  [self removeOldHighlightColor];
+  [self applyNewHighlightColor];
 }
 
 // Code from https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/blob/master/FuzzyAutocomplete/FuzzyAutocomplete.m
@@ -144,22 +158,32 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Editor"];
 
   if (menuItem && ![menuItem.submenu itemWithTitle:title]) {
-    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    [menuItem.submenu addItem:[NSMenuItem separatorItem]];
 
     NSMenuItem *highlightMenuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(toggleHighlight:) keyEquivalent:@""];
-    [highlightMenuItem setTarget:self];
-    [highlightMenuItem setState:([AutoHighlightSymbol isEnabled] ? NSOnState : NSOffState)];
-    [[menuItem submenu] addItem:highlightMenuItem];
+    highlightMenuItem.target = self;
+    highlightMenuItem.state = ([AutoHighlightSymbol isEnabled] ? NSOnState : NSOffState);
+    [menuItem.submenu addItem:highlightMenuItem];
 
-    NSMenuItem *colorMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Highlight Color" action:@selector(setupColor:) keyEquivalent:@""];
-    [colorMenuItem setTarget:self];
-    [[menuItem submenu] addItem:colorMenuItem];
+    NSMenuItem *colorMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Highlight Color" action:NULL keyEquivalent:@""];
+    colorMenuItem.target = self;
+    colorMenuItem.action = ([AutoHighlightSymbol isEnabled] ? @selector(setupColor:) : NULL);
+    [menuItem.submenu addItem:colorMenuItem];
+    self.colorMenuItem = colorMenuItem;
   }
 }
 
 - (void)toggleHighlight:(NSMenuItem *)item {
   [AutoHighlightSymbol setIsEnabled:![AutoHighlightSymbol isEnabled]];
-  [item setState:([AutoHighlightSymbol isEnabled] ? NSOnState : NSOffState)];
+
+  BOOL enabled = [AutoHighlightSymbol isEnabled];
+  if (enabled) {
+    [self applyNewHighlightColor];
+  } else {
+    [self removeOldHighlightColor];
+  }
+  [item setState:(enabled ? NSOnState : NSOffState)];
+  self.colorMenuItem.action = (enabled ? @selector(setupColor:) : NULL);
 }
 
 - (void)setupColor:(NSMenuItem *)item {
@@ -198,6 +222,8 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   }
 
   self.highlightColor = panel.color;
+  [self removeOldHighlightColor];
+  [self applyNewHighlightColor];
 
   CGFloat red = 0;
   CGFloat green = 0;
