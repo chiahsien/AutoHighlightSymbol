@@ -24,7 +24,7 @@ Usage
 -----
 - You need to enable *Highlight instances of selected symbol* option first from *Xcode preferences -> Text Editing*.
 
-- It works with Xcode v7.0.1 (7A1001), read this [wiki document](https://github.com/chiahsien/AutoHighlightSymbol/wiki/Which-version-of-Xcode-does-it-support%3F) if you're using other version of Xcode.
+- If it doesn't appear in your Xcode menu, read this [wiki document](https://github.com/chiahsien/AutoHighlightSymbol/wiki/Which-version-of-Xcode-does-it-support%3F) for more information.
 
 - After installation, you need to enable it from Xcode **[Editor] -> [Auto Highlight Symbol]** menu.
 
