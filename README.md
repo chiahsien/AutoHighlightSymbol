@@ -32,7 +32,7 @@ Usage
 Todo
 ----
 - [x] Integrate into [Alcatraz](http://alcatraz.io/)
-- [ ] Better highlight detection mechanism
+- [ ] Better highlight detection mechanism (Try to swizzle `DVTLayoutManager`'s `_clearAutoHighlightTokens` and `_displayAutoHighlightTokens` methods)
 - [ ] Better highlight rendering mechanism
 
 License
