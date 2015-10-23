@@ -10,6 +10,7 @@
 #import "HighlightManager.h"
 
 static NSString *const AHSEnabledKey = @"com.nelson.AutoHighlightSymbol.shouldBeEnabled";
+static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.highlightColor";
 
 @interface AutoHighlightSymbol ()
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
@@ -62,6 +63,17 @@ static NSString *const AHSEnabledKey = @"com.nelson.AutoHighlightSymbol.shouldBe
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:NSApplicationDidFinishLaunchingNotification
                                                 object:nil];
+
+  NSArray *arr = [[NSUserDefaults standardUserDefaults] objectForKey:AHSHighlightColorKey];
+  if (arr) {
+    CGFloat r = [arr[0] floatValue];
+    CGFloat g = [arr[1] floatValue];
+    CGFloat b = [arr[2] floatValue];
+    CGFloat a = [arr[3] floatValue];
+    [HighlightManager sharedManager].highlightColor = [NSColor colorWithCalibratedRed:r green:g blue:b alpha:a];
+  } else {
+    [HighlightManager sharedManager].highlightColor = [NSColor colorWithCalibratedRed:1.000 green:0.412 blue:0.093 alpha:0.750];
+  }
 }
 
 // Code from https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/blob/master/FuzzyAutocomplete/FuzzyAutocomplete.m
@@ -148,6 +160,16 @@ static NSString *const AHSEnabledKey = @"com.nelson.AutoHighlightSymbol.shouldBe
 
   [HighlightManager sharedManager].highlightColor = panel.color;
   [[HighlightManager sharedManager] renderHighlightColor];
+
+  CGFloat red = 0;
+  CGFloat green = 0;
+  CGFloat blue = 0;
+  CGFloat alpha = 0;
+  [panel.color getRed:&red green:&green blue:&blue alpha:&alpha];
+
+  NSArray *array = @[@(red), @(green), @(blue), @(alpha)];
+  [[NSUserDefaults standardUserDefaults] setObject:array forKey:AHSHighlightColorKey];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

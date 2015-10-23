@@ -15,14 +15,11 @@
 #import "IDEEditorContext.h"
 #import "IDEWorkspaceWindowController.h"
 
-static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.highlightColor";
-
 @interface HighlightManager ()
 @property (nonatomic, strong) NSMutableArray *ranges;
 @end
 
 @implementation HighlightManager
-@synthesize highlightColor = _highlightColor;
 
 #pragma mark - Properties
 
@@ -31,37 +28,6 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
     _ranges = [NSMutableArray array];
   }
   return _ranges;
-}
-
-- (NSColor *)highlightColor {
-  if (!_highlightColor) {
-    NSArray *arr = [[NSUserDefaults standardUserDefaults] objectForKey:AHSHighlightColorKey];
-    if (arr) {
-      CGFloat r = [arr[0] floatValue];
-      CGFloat g = [arr[1] floatValue];
-      CGFloat b = [arr[2] floatValue];
-      CGFloat a = [arr[3] floatValue];
-      _highlightColor = [NSColor colorWithCalibratedRed:r green:g blue:b alpha:a];
-    } else {
-      _highlightColor = [NSColor colorWithCalibratedRed:1.000 green:0.412 blue:0.093 alpha:0.750];
-    }
-  }
-  return _highlightColor;
-}
-
-- (void)setHighlightColor:(NSColor *)highlightColor {
-  _highlightColor = highlightColor;
-
-  CGFloat red = 0;
-  CGFloat green = 0;
-  CGFloat blue = 0;
-  CGFloat alpha = 0;
-
-  [highlightColor getRed:&red green:&green blue:&blue alpha:&alpha];
-
-  NSArray *array = @[@(red), @(green), @(blue), @(alpha)];
-  [[NSUserDefaults standardUserDefaults] setObject:array forKey:AHSHighlightColorKey];
-  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)setHighlightEnabled:(BOOL)highlightEnabled {
@@ -79,10 +45,12 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
 #pragma mark - Public Methods
 
 + (instancetype)sharedManager {
-  static id _manager = nil;
+  static HighlightManager *_manager = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    _manager = [[self alloc] init];
+    _manager = [[HighlightManager alloc] init];
+    _manager.highlightEnabled = NO;
+    _manager.highlightColor = [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0];
   });
   return _manager;
 }
