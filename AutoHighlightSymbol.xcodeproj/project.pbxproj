@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		524CDE171BD9D9E400578B75 /* NSObject+MethodSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 524CDE161BD9D9E400578B75 /* NSObject+MethodSwizzler.m */; settings = {ASSET_TAGS = (); }; };
 		52A5C4471BC5109E006D5EC6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A5C4461BC5109E006D5EC6 /* AppKit.framework */; settings = {ASSET_TAGS = (); }; };
 		52A5C4491BC5109E006D5EC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A5C4481BC5109E006D5EC6 /* Foundation.framework */; settings = {ASSET_TAGS = (); }; };
 		52A5C44D1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 52A5C44C1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme */; };
 		52A5C4501BC5109E006D5EC6 /* AutoHighlightSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A5C44F1BC5109E006D5EC6 /* AutoHighlightSymbol.m */; };
 		52A5C4531BC5109E006D5EC6 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */; };
+		52E4B5891BD9F0B1005A04E0 /* HighlightManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B5881BD9F0B1005A04E0 /* HighlightManager.m */; settings = {ASSET_TAGS = (); }; };
+		52E4B58C1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B58B1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		524CDE151BD9D9E400578B75 /* NSObject+MethodSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodSwizzler.h"; sourceTree = "<group>"; };
+		524CDE161BD9D9E400578B75 /* NSObject+MethodSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodSwizzler.m"; sourceTree = "<group>"; };
 		52A5C4431BC5109E006D5EC6 /* AutoHighlightSymbol.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoHighlightSymbol.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A5C4461BC5109E006D5EC6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		52A5C4481BC5109E006D5EC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -73,6 +78,10 @@
 		52D7CAAC1BCE496800FDE671 /* IDEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEViewController.h; sourceTree = "<group>"; };
 		52D7CAAD1BCE496800FDE671 /* IDEWorkspaceTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEWorkspaceTabController.h; sourceTree = "<group>"; };
 		52D7CAAE1BCE496800FDE671 /* IDEWorkspaceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEWorkspaceWindowController.h; sourceTree = "<group>"; };
+		52E4B5871BD9F0B1005A04E0 /* HighlightManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightManager.h; sourceTree = "<group>"; };
+		52E4B5881BD9F0B1005A04E0 /* HighlightManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightManager.m; sourceTree = "<group>"; };
+		52E4B58A1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoHighlightSymbol.h"; sourceTree = "<group>"; };
+		52E4B58B1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoHighlightSymbol.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +97,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		520631E41BD9F757005E8C06 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				52E4B58A1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.h */,
+				52E4B58B1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.m */,
+				524CDE151BD9D9E400578B75 /* NSObject+MethodSwizzler.h */,
+				524CDE161BD9D9E400578B75 /* NSObject+MethodSwizzler.m */,
+				52A5C4511BC5109E006D5EC6 /* NSObject_Extension.h */,
+				52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		52A5C43A1BC5109E006D5EC6 = {
 			isa = PBXGroup;
 			children = (
@@ -118,12 +140,12 @@
 		52A5C44A1BC5109E006D5EC6 /* AutoHighlightSymbol */ = {
 			isa = PBXGroup;
 			children = (
+				520631E41BD9F757005E8C06 /* Categories */,
 				52A5C44B1BC5109E006D5EC6 /* Supporting Files */,
 				52A5C44E1BC5109E006D5EC6 /* AutoHighlightSymbol.h */,
 				52A5C44F1BC5109E006D5EC6 /* AutoHighlightSymbol.m */,
-				52A5C4541BC5109E006D5EC6 /* Info.plist */,
-				52A5C4511BC5109E006D5EC6 /* NSObject_Extension.h */,
-				52A5C4521BC5109E006D5EC6 /* NSObject_Extension.m */,
+				52E4B5871BD9F0B1005A04E0 /* HighlightManager.h */,
+				52E4B5881BD9F0B1005A04E0 /* HighlightManager.m */,
 			);
 			path = AutoHighlightSymbol;
 			sourceTree = "<group>";
@@ -132,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				52A5C44C1BC5109E006D5EC6 /* AutoHighlightSymbol.xcscheme */,
+				52A5C4541BC5109E006D5EC6 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -260,6 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A5C4501BC5109E006D5EC6 /* AutoHighlightSymbol.m in Sources */,
+				52E4B5891BD9F0B1005A04E0 /* HighlightManager.m in Sources */,
+				52E4B58C1BD9F3DE005A04E0 /* NSObject+AutoHighlightSymbol.m in Sources */,
+				524CDE171BD9D9E400578B75 /* NSObject+MethodSwizzler.m in Sources */,
 				52A5C4531BC5109E006D5EC6 /* NSObject_Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

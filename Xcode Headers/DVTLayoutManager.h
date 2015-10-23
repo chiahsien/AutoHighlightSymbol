@@ -63,8 +63,8 @@
 @property(getter=isTokenizedEditingEnabled) BOOL tokenizedEditingEnabled; // @synthesize tokenizedEditingEnabled=_tokenizedEditingEnabled;
 - (void)scheduleAutoHighlightTokenWithTextView:(id)arg1;
 - (void)_autoHighlightTokenWithTimer:(id)arg1;
-- (void)_clearAutoHighlightTokens;
-- (void)_displayAutoHighlightTokens;
+//- (void)_clearAutoHighlightTokens;
+//- (void)_displayAutoHighlightTokens;
 @property(getter=isAutoHighlightTokensEnabled) BOOL autoHighlightTokensEnabled;
 - (void)hideMessageBubblesInRange:(struct _NSRange)arg1;
 - (void)showMessageBubblesInRange:(struct _NSRange)arg1;
