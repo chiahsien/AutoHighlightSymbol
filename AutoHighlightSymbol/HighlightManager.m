@@ -81,6 +81,11 @@
   DVTSourceTextView *textView = [self currentSourceTextView];
   DVTLayoutManager *layoutManager = (DVTLayoutManager *)textView.layoutManager;
 
+  // We want to highlight multiple instances of selected symbol.
+  if (layoutManager.autoHighlightTokenRanges.count < 2) {
+    return;
+  }
+
   [layoutManager.autoHighlightTokenRanges enumerateObjectsUsingBlock:^(NSValue *range, NSUInteger idx, BOOL *stop) {
     [layoutManager addTemporaryAttribute:NSBackgroundColorAttributeName
                                    value:self.highlightColor
