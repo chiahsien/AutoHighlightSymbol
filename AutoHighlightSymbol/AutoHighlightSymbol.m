@@ -106,11 +106,7 @@ static NSString *const AHSEnabledKey = @"com.nelson.AutoHighlightSymbol.shouldBe
 }
 
 - (void)enableHighlight:(BOOL)enabled {
-  if (enabled) {
-    [[HighlightManager sharedManager] applyNewHighlightColor];
-  } else {
-    [[HighlightManager sharedManager] removeOldHighlightColor];
-  }
+  [HighlightManager sharedManager].highlightEnabled = enabled;
   self.highlightMenuItem.state = (enabled ? NSOnState : NSOffState);
   self.colorMenuItem.action = (enabled ? @selector(setupColor:) : NULL);
 }
@@ -151,8 +147,7 @@ static NSString *const AHSEnabledKey = @"com.nelson.AutoHighlightSymbol.shouldBe
   }
 
   [HighlightManager sharedManager].highlightColor = panel.color;
-  [[HighlightManager sharedManager] removeOldHighlightColor];
-  [[HighlightManager sharedManager] applyNewHighlightColor];
+  [[HighlightManager sharedManager] renderHighlightColor];
 }
 
 @end

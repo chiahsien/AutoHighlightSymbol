@@ -10,7 +10,7 @@
 
 @interface HighlightManager : NSObject
 + (instancetype)sharedManager;
-- (void)removeOldHighlightColor;
-- (void)applyNewHighlightColor;
+- (void)renderHighlightColor;
 @property (nonatomic, strong, readwrite) NSColor *highlightColor;
+@property (nonatomic, assign) BOOL highlightEnabled;
 @end

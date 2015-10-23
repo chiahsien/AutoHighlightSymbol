@@ -26,8 +26,7 @@
 #pragma mark - Method Swizzling
 
 - (void)ahs_displayAutoHighlightTokens {
-  [[HighlightManager sharedManager] removeOldHighlightColor];
-  [[HighlightManager sharedManager] applyNewHighlightColor];
+  [[HighlightManager sharedManager] renderHighlightColor];
   [self ahs_displayAutoHighlightTokens];
 }
 

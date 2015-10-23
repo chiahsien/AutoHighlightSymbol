@@ -64,6 +64,18 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)setHighlightEnabled:(BOOL)highlightEnabled {
+  if (_highlightEnabled == highlightEnabled) {
+    return;
+  }
+  _highlightEnabled = highlightEnabled;
+  if (highlightEnabled) {
+    [self applyNewHighlightColor];
+  } else {
+    [self removeOldHighlightColor];
+  }
+}
+
 #pragma mark - Public Methods
 
 + (instancetype)sharedManager {
@@ -74,6 +86,15 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   });
   return _manager;
 }
+
+- (void)renderHighlightColor {
+  if (self.highlightEnabled) {
+    [self removeOldHighlightColor];
+    [self applyNewHighlightColor];
+  }
+}
+
+#pragma mark - Highlight Rendering
 
 - (void)removeOldHighlightColor {
   DVTSourceTextView *textView = [self currentSourceTextView];
