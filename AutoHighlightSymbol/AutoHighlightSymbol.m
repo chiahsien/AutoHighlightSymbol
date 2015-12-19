@@ -64,13 +64,9 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
                                                   name:NSApplicationDidFinishLaunchingNotification
                                                 object:nil];
 
-  NSArray *arr = [[NSUserDefaults standardUserDefaults] objectForKey:AHSHighlightColorKey];
-  if (arr) {
-    CGFloat r = [arr[0] floatValue];
-    CGFloat g = [arr[1] floatValue];
-    CGFloat b = [arr[2] floatValue];
-    CGFloat a = [arr[3] floatValue];
-    [HighlightManager sharedManager].highlightColor = [NSColor colorWithCalibratedRed:r green:g blue:b alpha:a];
+  NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:AHSHighlightColorKey];
+  if (data) {
+    [HighlightManager sharedManager].highlightColor = (NSColor *)[NSUnarchiver unarchiveObjectWithData:data];
   } else {
     [HighlightManager sharedManager].highlightColor = [NSColor colorWithCalibratedRed:1.000 green:0.412 blue:0.093 alpha:0.750];
   }
@@ -161,14 +157,8 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
   [HighlightManager sharedManager].highlightColor = panel.color;
   [[HighlightManager sharedManager] renderHighlightColor];
 
-  CGFloat red = 0;
-  CGFloat green = 0;
-  CGFloat blue = 0;
-  CGFloat alpha = 0;
-  [panel.color getRed:&red green:&green blue:&blue alpha:&alpha];
-
-  NSArray *array = @[@(red), @(green), @(blue), @(alpha)];
-  [[NSUserDefaults standardUserDefaults] setObject:array forKey:AHSHighlightColorKey];
+  NSData *data = [NSArchiver archivedDataWithRootObject:panel.color];
+  [[NSUserDefaults standardUserDefaults] setObject:data forKey:AHSHighlightColorKey];
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
