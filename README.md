@@ -1,11 +1,17 @@
 Auto Highlight Symbol
 =====================
 
+**About Xcode 8**
+
+Xcode 8 does't support plugins anymore, but there is a [workaround](https://github.com/chiahsien/AutoHighlightSymbol/issues/6), use at your own risk.
+
+---
+
 Xcode can highlight instances of selected symbol, but what it does is to add dash lines under the instances, which is hard to be noticed.
 
 AutoHighlightSymbol is a plugin for Xcode, it adds background highlight color to those instances. It's super useful while you're tracing codes, especially when you want to figure out where a specific variable is used in a certain method.
 
-This plugin is still in early beta, you're welcome to improve it and send me pull requests.
+You're welcome to improve it and send me pull requests.
 
 Screenshots
 -----------
@@ -32,8 +38,13 @@ Usage
 Todo
 ----
 - [x] Integrate into [Alcatraz](http://alcatraz.io/)
-- [x] Better highlight detection mechanism (Try to swizzle `DVTLayoutManager`'s `_displayAutoHighlightTokens` method)
-- [ ] Better highlight rendering mechanism
+- [x] Better highlight detection mechanism
+- [x] Better highlight rendering mechanism
+
+Alternative
+-----------
+
+If you need more functionalities, you should give [HighlightSelectedString](https://github.com/keepyounger/HighlightSelectedString) a try.
 
 License
 -------
