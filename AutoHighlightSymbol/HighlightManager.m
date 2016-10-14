@@ -7,6 +7,7 @@
 //
 
 #import "HighlightManager.h"
+#import "Aspects.h"
 
 #import "DVTLayoutManager.h"
 #import "DVTSourceTextView.h"
@@ -15,20 +16,9 @@
 #import "IDEEditorContext.h"
 #import "IDEWorkspaceWindowController.h"
 
-@interface HighlightManager ()
-@property (nonatomic, strong) NSMutableArray *ranges;
-@end
-
 @implementation HighlightManager
 
 #pragma mark - Properties
-
-- (NSMutableArray *)ranges {
-  if (!_ranges) {
-    _ranges = [NSMutableArray array];
-  }
-  return _ranges;
-}
 
 - (void)setHighlightEnabled:(BOOL)highlightEnabled {
   if (_highlightEnabled == highlightEnabled) {
@@ -49,8 +39,6 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     _manager = [[HighlightManager alloc] init];
-    _manager.highlightEnabled = NO;
-    _manager.highlightColor = [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0];
   });
   return _manager;
 }
@@ -62,17 +50,55 @@
   }
 }
 
+#pragma mark - Life cycle
+
+- (instancetype)init {
+  self = [super init];
+  if (!self) {
+    return nil;
+  }
+
+  [NSLayoutManager aspect_hookSelector:@selector(init) withOptions:AspectPositionAfter usingBlock:^(id < AspectInfo > info) {
+    DVTLayoutManager *layoutManager = (DVTLayoutManager *)[info instance];
+    [layoutManager addObserver:self forKeyPath:@"autoHighlightTokenRanges" options:NSKeyValueObservingOptionNew context:nil];
+  } error:nil];
+  [NSLayoutManager aspect_hookSelector:NSSelectorFromString(@"dealloc") withOptions:AspectPositionBefore usingBlock:^(id < AspectInfo > info) {
+    DVTLayoutManager *layoutManager = (DVTLayoutManager *)[info instance];
+    [layoutManager removeObserver:self forKeyPath:@"autoHighlightTokenRanges"];
+  } error:nil];
+
+  self.highlightColor = [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0];
+  self.highlightEnabled = NO;
+
+  return self;
+}
+
+#pragma mark - Observation
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary <NSKeyValueChangeKey, id> *)change context:(void *)context {
+  if ([keyPath isEqualToString:@"autoHighlightTokenRanges"]) {
+    [self renderHighlightColor];
+  } else {
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+  }
+}
+
 #pragma mark - Highlight Rendering
 
 - (void)removeOldHighlightColor {
   DVTSourceTextView *textView = [self currentSourceTextView];
   DVTLayoutManager *layoutManager = (DVTLayoutManager *)textView.layoutManager;
+  NSUInteger length = [[[textView textStorage] string] length];
+  NSRange range = NSMakeRange(0, 0);
 
-  for (NSValue *range in self.ranges) {
-    [layoutManager removeTemporaryAttribute:NSBackgroundColorAttributeName
-                          forCharacterRange:[range rangeValue]];
+  for (NSUInteger i = 0; i < length; i += range.length) {
+    NSDictionary *dic = [layoutManager temporaryAttributesAtCharacterIndex:i effectiveRange:&range];
+    id color = dic[NSBackgroundColorAttributeName];
+    if ([self.highlightColor isEqual:color]) {
+      [layoutManager removeTemporaryAttribute:NSBackgroundColorAttributeName
+                            forCharacterRange:range];
+    }
   }
-  [self.ranges removeAllObjects];
 
   [textView setNeedsDisplay:YES];
 }
@@ -91,7 +117,6 @@
                                    value:self.highlightColor
                        forCharacterRange:[range rangeValue]];
   }];
-  [self.ranges addObjectsFromArray:layoutManager.autoHighlightTokenRanges];
 
   [textView setNeedsDisplay:YES];
 }
