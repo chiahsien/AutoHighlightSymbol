@@ -7,7 +7,6 @@
 //
 
 #import "HighlightManager.h"
-#import "Aspects.h"
 
 #import "DVTLayoutManager.h"
 #import "DVTSourceTextView.h"
@@ -39,6 +38,8 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     _manager = [[HighlightManager alloc] init];
+    _manager.highlightColor = [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0];
+    _manager.highlightEnabled = NO;
   });
   return _manager;
 }
@@ -47,39 +48,6 @@
   if (self.highlightEnabled) {
     [self removeOldHighlightColor];
     [self applyNewHighlightColor];
-  }
-}
-
-#pragma mark - Life cycle
-
-- (instancetype)init {
-  self = [super init];
-  if (!self) {
-    return nil;
-  }
-
-  [NSLayoutManager aspect_hookSelector:@selector(init) withOptions:AspectPositionAfter usingBlock:^(id < AspectInfo > info) {
-    DVTLayoutManager *layoutManager = (DVTLayoutManager *)[info instance];
-    [layoutManager addObserver:self forKeyPath:@"autoHighlightTokenRanges" options:NSKeyValueObservingOptionNew context:nil];
-  } error:nil];
-  [NSLayoutManager aspect_hookSelector:NSSelectorFromString(@"dealloc") withOptions:AspectPositionBefore usingBlock:^(id < AspectInfo > info) {
-    DVTLayoutManager *layoutManager = (DVTLayoutManager *)[info instance];
-    [layoutManager removeObserver:self forKeyPath:@"autoHighlightTokenRanges"];
-  } error:nil];
-
-  self.highlightColor = [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0];
-  self.highlightEnabled = NO;
-
-  return self;
-}
-
-#pragma mark - Observation
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary <NSKeyValueChangeKey, id> *)change context:(void *)context {
-  if ([keyPath isEqualToString:@"autoHighlightTokenRanges"]) {
-    [self renderHighlightColor];
-  } else {
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
   }
 }
 

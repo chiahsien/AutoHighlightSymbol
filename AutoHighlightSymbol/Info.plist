@@ -21,10 +21,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>DVTPlugInCompatibilityUUIDs</key>
 	<array>
-		<string>8A66E736-A720-4B3C-92F1-33D9962C69DF</string>
 		<string>ACA8656B-FEA8-4B6D-8E4A-93F4C95C362C</string>
 		<string>7265231C-39B4-402C-89E1-16167C4CC990</string>
 		<string>0420B86A-AA43-4792-9ED0-6FE0F2B16A13</string>
