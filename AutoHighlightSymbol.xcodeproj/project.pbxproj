@@ -225,6 +225,7 @@
 				52A5C43F1BC5109E006D5EC6 /* Sources */,
 				52A5C4401BC5109E006D5EC6 /* Resources */,
 				52A5C4411BC5109E006D5EC6 /* Frameworks */,
+				52BD9BE01DB8BF9900EEDABB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -241,7 +242,7 @@
 		52A5C43B1BC5109E006D5EC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Nelson;
 				TargetAttributes = {
 					52A5C4421BC5109E006D5EC6 = {
@@ -277,6 +278,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52BD9BE01DB8BF9900EEDABB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/python;
+			shellScript = "# Get the compatibility UUID from the current version of Xcode and update\n# the plugin's Info.plist accordingly:\n\nimport os\nimport plistlib\nimport subprocess\n\ndev_path = subprocess.check_output(['xcode-select', '-p']).strip()\nxcode_info_path = os.path.abspath(os.path.join(dev_path, '../Info'))\ncompat_uuid = subprocess.check_output(['defaults', 'read', xcode_info_path, 'DVTPlugInCompatibilityUUID']).strip()\ninfo_plist_path = os.path.join(os.getenv('BUILT_PRODUCTS_DIR'), 'AutoHighlightSymbol.xcplugin/Contents/Info.plist')\ninfo =  plistlib.readPlist(info_plist_path)\ninfo['DVTPlugInCompatibilityUUIDs'] = [compat_uuid]\nplistlib.writePlist(info, info_plist_path)\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52A5C43F1BC5109E006D5EC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -306,8 +323,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -328,6 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(HOME)/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 			};
@@ -346,8 +366,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -362,6 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(HOME)/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MTL_ENABLE_DEBUG_INFO = NO;
 			};
 			name = Release;
