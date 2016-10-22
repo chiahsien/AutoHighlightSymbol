@@ -27,7 +27,11 @@ static NSString *const AHSHighlightColorKey = @"com.nelson.AutoHighlightSymbol.h
 }
 
 + (BOOL)isEnabled {
-  return [[NSUserDefaults standardUserDefaults] boolForKey:AHSEnabledKey];
+  NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+  if ([[[prefs dictionaryRepresentation] allKeys] containsObject:AHSEnabledKey]) {
+    return [prefs boolForKey:AHSEnabledKey];
+  }
+  return YES;
 }
 
 - (void)dealloc {
